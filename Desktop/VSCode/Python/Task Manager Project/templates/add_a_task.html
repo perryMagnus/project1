@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <form method="POST" action="/add_a_task">
+        {{ form.csrf_token }}
+
+        {{ form.title }}
+        {{ form.description }}
+        {{ form.deadline }}
+
+        {{ form.submit }}
+    </form>
+</div>
+
+{% endblock %}

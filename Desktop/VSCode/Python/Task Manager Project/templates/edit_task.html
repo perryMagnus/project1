@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <h1>Nazwa tasku:</h1><h2>{{ t.title }}</h2><br>
+    <h1>Opis tasku:</h1><h2>{{ t.description }}</h2><br>
+    <h1>Deadline: </h1><h2>{{ t.deadline }}</h2><br>
+
+    <form method="POST">
+        {{ form.csrf_token }}
+
+        {{ form.title }}<br>
+        {{ form.description }}<br>
+        {{ form.deadline.label }}{{ form.deadline }}<br>
+
+        {{ form.submit }}
+    </form>
+
+</div>
+{% endblock %}

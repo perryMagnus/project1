@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+
+    <h2>Automatycznie Cię wylogowano z powodu braku aktywności.</h2><br>
+    <h2>Kliknij przycisk poniżej, by cię przekierowano do strony logowania.</h2><br>
+
+    <form method="POST" action="automatic_log_out">
+        {{ form.csrf_token }}
+
+        {{ form.redirect }}
+    </form>
+</div>
+{% endblock %}

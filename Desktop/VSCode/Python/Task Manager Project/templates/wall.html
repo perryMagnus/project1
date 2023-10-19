@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <form method="POST" action="/wall">
+        {{ form.csrf_token }}
+
+        {{ form.add_a_task }}
+    </form>
+    <br>
+
+    <ul>
+        {% for t in task %}
+            <h4>Task ID: {{ t.id }}</h4>
+            <h1>{{ t.title }}</h1>
+            <h3>Opis:</h3><li> {{ t.description }}</li>
+            <h3>Deadline: </h3><li> {{ t.deadline }}</li>
+
+            <form method="POST" action="/delete_task/{{ t.id }}">
+                {{ form.csrf_token }}
+
+                <input type="hidden" name="task_id" value="{{ t.id }}">
+                <button type="submit">Delete</button>
+            </form>
+            <form method="POST" action="/edit_task/{{ t.id }}">
+                {{ form.csrf_token }}
+
+                <input type="hidden" name="task_id" value="{{ t.id }}">
+                <button type="submit">Update</button>
+            </form>
+        {% endfor %}
+        <br>
+    </ul>
+</div>
+{% endblock %}

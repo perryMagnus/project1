@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div style="display: flex; justify-content: center;">
+    <div>
+        <form method="POST" action="/login">
+            {{ form.csrf_token }}
+
+            {{ form.username }}<br>
+            {{ form.password }}<br>
+            {{ form.remember_me }} {{ form.remember_me.label }}<br>
+
+            {{ form.submit_login }}
+        </form>
+        
+        <form method="POST" action="/register">
+            {{ form.csrf_token }}
+
+            <h2>Nie masz konta?</h2>
+
+            {{ form.submit_register }}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
